@@ -1,21 +1,31 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(urdf_sim_tutorial)
 
-find_package(catkin REQUIRED COMPONENTS 
- rospy
-  geometry_msgs)
+find_package(catkin REQUIRED COMPONENTS rospy geometry_msgs)
 
-catkin_package()
-add_executable(drive scripts/drive.py)
+catkin_package(
+  INCLUDE_DIRS scripts
+  LIBRARIES urdf_sim_tutorial
+  CATKIN_DEPENDS rospy geometry_msgs
+  DEPENDS system_lib
+)
 
-catkin_python_setup()
+catkin_install_python(PROGRAMS scripts/drive.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}/scripts
+)
+
+include_directories(
+# include
+  ${catkin_INCLUDE_DIRS}
+)
+
+#add_executable(drive.py scripts/drive.py)
+
+#catkin_python_setup()
 
 
 
 
 install(DIRECTORY config launch urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
-  
-catkin_install_python(PROGRAMS scripts/drive.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+
