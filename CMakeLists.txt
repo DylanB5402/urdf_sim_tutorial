@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(urdf_sim_tutorial)
 
-find_package(catkin REQUIRED COMPONENTS rospy geometry_msgs)
+find_package(catkin REQUIRED COMPONENTS rospy geometry_msgs std_msgs)
 
 catkin_package(
   INCLUDE_DIRS scripts
   LIBRARIES urdf_sim_tutorial
-  CATKIN_DEPENDS rospy geometry_msgs
+  CATKIN_DEPENDS rospy geometry_msgs std_msgs
   DEPENDS system_lib
 )
 
