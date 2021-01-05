@@ -8,3 +8,7 @@ Working on a controllable mecanum model which can be extended for future Triton 
 Note to self: add execuatable with 
 
 chmod +x file.py
+
+To do:
+- tank drive class to set velocity to individual wheels, see how that works
+- mecanum drive class, use kinematics/odometry from wpilib
