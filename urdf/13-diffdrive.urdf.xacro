@@ -268,7 +268,7 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
     <joint name="head_swivel">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <hardwareInterface>VelocityJointInterface</hardwareInterface>
     </joint>
   </transmission>
 
