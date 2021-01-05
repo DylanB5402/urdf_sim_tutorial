@@ -10,7 +10,11 @@ catkin_package(
   DEPENDS system_lib
 )
 
-catkin_install_python(PROGRAMS scripts/drive.py scripts/move_head.py
+catkin_install_python(PROGRAMS 
+  scripts/drive.py 
+  scripts/move_head.py 
+  scripts/move_model.py 
+  scripts/tank_drive.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}/scripts
 )
 
