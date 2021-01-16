@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot name="holonomicdrive" xmlns:xacro="http://ros.org/wiki/xacro">
+  
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+<!-- x axis red, y axis green -->
+  <xacro:property name="pi" value="3.1415926" />
+  <xacro:property name="base_side_length" value="0.5" />
+  <xacro:property name="wheel_offset" value="${ (((base_side_length * base_side_length)/2) ** 0.5)/2}" />
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size = "${base_side_length} ${base_side_length} 0.2"/>
+      </geometry>
+      <material name = "white"/>
+      <origin rpy = "0 0 ${pi/4}"/>
+    </visual> 
+    <collision>
+      <box size = "0.5 0.5 0.2"/>
+    </collision>
+  </link>
+
+  <link name="right_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius = "0.1" length = "0.05"/>
+      </geometry>
+      <material name = "black"/>
+      <origin xyz = "${wheel_offset} ${wheel_offset} 0.05" rpy = "0 ${pi/2} ${pi/4}"/>
+    </visual> 
+    <collision>
+      <box size = "0.5 0.5 0.2"/>
+    </collision>
+  </link>
+
+</robot>
