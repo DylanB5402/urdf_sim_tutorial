@@ -28,6 +28,7 @@
       <geometry>
         <box size = "${base_side_length} ${base_side_length} 0.2"/>
       </geometry>
+      <origin rpy = "0 0 ${pi/4}"/>
     </collision>
   </link>
 
@@ -41,7 +42,7 @@
     </visual> 
     <collision>
      <geometry>
-        <cylinder radius = "0.075" length = "0.05"/>
+        <cylinder radius = "0.075" length = "0.04"/>
       </geometry>
       <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/>
     </collision>
@@ -50,8 +51,8 @@
   <joint name="right_front_wheel_joint" type="continuous">
     <parent link="base_link"/>
     <child link="right_front_wheel"/>   
-    <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/>
-    <axis xyz ="${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} 0"/>
+    <!-- <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/> -->
+    <axis xyz ="1 1 0"/>
   </joint>
 
   <transmission name="right_front_wheel_trans">
