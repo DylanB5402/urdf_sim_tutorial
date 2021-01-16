@@ -25,7 +25,9 @@
       <origin rpy = "0 0 ${pi/4}"/>
     </visual> 
     <collision>
-      <box size = "0.5 0.5 0.2"/>
+      <geometry>
+        <box size = "${base_side_length} ${base_side_length} 0.2"/>
+      </geometry>
     </collision>
   </link>
 
@@ -38,11 +40,33 @@
       <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/>
     </visual> 
     <collision>
-      <box size = "0.5 0.5 0.2"/>
+     <geometry>
+        <cylinder radius = "0.075" length = "0.05"/>
+      </geometry>
+      <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/>
     </collision>
   </link>
 
-  <link name="right_back_wheel">
+  <joint name="right_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>   
+    <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075" rpy = "0 ${pi/2} ${pi/4}"/>
+    <axis xyz ="${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} 0"/>
+  </joint>
+
+  <transmission name="right_front_wheel_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="right_front_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+    <joint name="right_front_wheel_joint">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+
+
+
+  <!-- <link name="right_back_wheel">
     <visual>
       <geometry>
         <cylinder radius = "0.075" length = "0.05"/>
@@ -79,6 +103,12 @@
     <collision>
       <box size = "0.5 0.5 0.2"/>
     </collision>
-  </link>
+  </link> -->
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
 
 </robot>
