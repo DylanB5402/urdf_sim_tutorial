@@ -7,7 +7,7 @@ import math
 
 # type of setpoint is either angle (rad) or angular velocity (rad/s) as specified by the controller type in head.yaml
 def go_to_setpoint(setpoint):
-    setpoint_publisher = rospy.Publisher("/r2d2_head_controller/command", Float64, queue_size=10)
+    setpoint_publisher = rospy.Publisher("/turret_controller/command", Float64, queue_size=10)
     rospy.init_node('head_setpoint', anonymous=True)
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
