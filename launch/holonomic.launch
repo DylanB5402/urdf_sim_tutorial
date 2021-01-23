@@ -21,8 +21,13 @@
         file="$(find urdf_sim_tutorial)/config/turret.yaml"
         ns="turret_controller" />
 
+    <rosparam command="load"
+        file="$(find urdf_sim_tutorial)/config/wheel.yaml"
+        ns="holonomic_drive_controller" />
+
     <node name="robot_controller_spawner" pkg="controller_manager" type="spawner"
         args="turret_controller 
+              holonomic_drive_controller
          --shutdown-timeout 3"/>
 
 </launch>
