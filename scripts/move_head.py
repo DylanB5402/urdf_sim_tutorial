@@ -20,6 +20,6 @@ def go_to_setpoint(setpoint):
 
 if __name__ == '__main__':
     try:
-        go_to_setpoint(2.0)
+        go_to_setpoint(5)
     except rospy.ROSInterruptException:
         pass

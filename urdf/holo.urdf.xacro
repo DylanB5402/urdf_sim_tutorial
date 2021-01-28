@@ -18,7 +18,7 @@
   
 <!-- x axis red, y axis green -->
   <xacro:property name="pi" value="3.1415926" />
-  <xacro:property name="base_side_length" value="0.5" />
+  <xacro:property name="base_side_length" value="1" />
   <xacro:property name="wheel_offset" value="${ (((base_side_length * base_side_length)/2) ** 0.5)/2}" />
 
   <xacro:property name="wheel_width" value = "${0.05}"/>
@@ -81,18 +81,20 @@
         <box size="0.7 0.1 0.1"/>
       </geometry> 
       <material name="white"/>
+      <origin rpy="0.0 0.0 ${pi/2}"/>
     </visual> 
       <collision>
         <geometry>
         <box size="0.7 0.1 0.1"/>
       </geometry>  
+      <origin rpy="0.0 0.0 ${pi/2}"/>
     </collision>
   </link>
 
   <joint name="turret_to_bar_link" type="fixed">
     <parent link="turret"/>
     <child link="turret_bar"/>
-    <origin xyz="0.0 0.0 0.1"/>
+    <origin xyz="0 0.25 0.1"/>
   </joint>
 
 
@@ -102,13 +104,13 @@
         <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <material name = "black"/>
-      <origin rpy="0 ${pi/2} ${pi/4}"/>
+      <origin rpy="0 ${pi/2} ${(pi/4) + pi}"/>
     </visual> 
     <collision>
      <geometry>
         <cylinder radius = "0.075" length = "0.04"/>
       </geometry>
-      <origin rpy="0 ${pi/2} ${pi/4}"/>
+      <origin rpy="0 ${pi/2} ${(pi/4) + pi}"/>
     </collision>
     <xacro:default_inertial mass="1"/>
   </link>
@@ -118,8 +120,8 @@
     <child link="right_front_wheel"/>   
     <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075"/>
     <axis xyz ="1 1 0"/>
-    <limit effort="60" velocity="6.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <limit effort="30" velocity="100"/>
+    <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <transmission name="right_front_wheel_trans">
@@ -155,8 +157,8 @@
     <child link="left_front_wheel"/>   
     <origin xyz = "${- wheel_offset - wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075"/>
     <axis xyz ="-1 1 0"/>
-    <limit effort="60" velocity="6.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <limit effort="30" velocity="100"/>
+    <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <transmission name="left_front_wheel_trans">
@@ -192,8 +194,8 @@
     <child link="left_back_wheel"/>   
     <origin xyz = "${- wheel_offset - wheel_width_offset} ${-wheel_offset - wheel_width_offset} -0.075"/>
     <axis xyz ="-1 -1 0"/>
-    <limit effort="60" velocity="6.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <limit effort="30" velocity="100"/>
+    <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <transmission name="left_back_wheel_trans">
@@ -213,13 +215,13 @@
         <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <material name = "black"/>
-      <origin rpy="0 ${pi/2} ${-pi/4}"/>
+      <origin rpy="0 ${pi/2} ${(-pi/4) + (pi)}"/>
     </visual> 
     <collision>
      <geometry>
         <cylinder radius = "0.075" length = "0.04"/>
       </geometry>
-      <origin rpy="0 ${pi/2} ${-pi/4}"/>
+      <origin rpy="0 ${pi/2} ${(-pi/4) + pi}"/>
     </collision>
     <xacro:default_inertial mass="1"/>
   </link>
@@ -229,8 +231,8 @@
     <child link="right_back_wheel"/>   
     <origin xyz = "${wheel_offset + wheel_width_offset} ${-wheel_offset - wheel_width_offset} -0.075"/>
     <axis xyz ="1 -1 0"/>
-    <limit effort="60" velocity="6.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <limit effort="30" velocity="100"/>
+    <dynamics damping="0.0" friction="0.1"/>
   </joint>
 
   <transmission name="right_back_wheel_trans">
