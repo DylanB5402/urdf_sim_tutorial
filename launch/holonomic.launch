@@ -18,6 +18,10 @@
     </include>
 
     <rosparam command="load"
+        file="$(find urdf_sim_tutorial)/config/holonomicjoints.yaml"
+        ns="holonomic_joint_state_controller" />
+
+    <rosparam command="load"
         file="$(find urdf_sim_tutorial)/config/turret.yaml"
         ns="turret_controller" />
 
@@ -26,7 +30,8 @@
         ns="holonomic_drive_controller" />
 
     <node name="robot_controller_spawner" pkg="controller_manager" type="spawner"
-        args="turret_controller 
+        args="holonomic_joint_state_controller
+              turret_controller 
               holonomic_drive_controller
          --shutdown-timeout 3"/>
 
