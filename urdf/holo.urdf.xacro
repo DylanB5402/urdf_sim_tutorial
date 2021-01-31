@@ -17,7 +17,7 @@
   </xacro:macro>
   
 <!-- x axis red, y axis green -->
-  <xacro:property name="pi" value="3.1415926" />
+  <!-- <xacro:property name="pi" value="3.1415926" /> -->
   <xacro:property name="base_side_length" value="1" />
   <xacro:property name="wheel_offset" value="${ (((base_side_length * base_side_length)/2) ** 0.5)/2}" />
 
@@ -52,7 +52,7 @@
         <cylinder radius="0.25" length="0.1"/>
       </geometry>
     </collision>
-    <xacro:default_inertial mass="2"/>
+    <xacro:default_inertial mass="1"/>
   </link>
 
   <joint name="turret_joint" type="continuous">
@@ -61,7 +61,7 @@
     <origin xyz="0.0 0.0 0.15"/>
     <axis xyz="0.0 0.0 1"/>
     <limit effort="30" velocity="1.0"/>
-    <dynamics damping="0.0" friction="0.0"/>
+    <dynamics damping="0.0" friction="0.1"/>
     <!-- <kp value = '1'/> -->
   </joint>
 
@@ -108,7 +108,7 @@
     </visual> 
     <collision>
      <geometry>
-        <cylinder radius = "0.075" length = "0.04"/>
+        <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <origin rpy="0 ${pi/2} ${(pi/4) + pi}"/>
     </collision>
@@ -121,7 +121,7 @@
     <origin xyz = "${wheel_offset + wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075"/>
     <axis xyz ="1 1 0"/>
     <limit effort="30" velocity="100"/>
-    <dynamics damping="0.0" friction="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
 
   <transmission name="right_front_wheel_trans">
@@ -145,7 +145,7 @@
     </visual> 
     <collision>
      <geometry>
-        <cylinder radius = "0.075" length = "0.04"/>
+        <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <origin rpy="0 ${pi/2} ${-pi/4}"/>
     </collision>
@@ -158,7 +158,7 @@
     <origin xyz = "${- wheel_offset - wheel_width_offset} ${wheel_offset + wheel_width_offset} -0.075"/>
     <axis xyz ="-1 1 0"/>
     <limit effort="30" velocity="100"/>
-    <dynamics damping="0.0" friction="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
 
   <transmission name="left_front_wheel_trans">
@@ -182,7 +182,7 @@
     </visual> 
     <collision>
      <geometry>
-        <cylinder radius = "0.075" length = "0.04"/>
+        <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <origin rpy="0 ${pi/2} ${pi/4}"/>
     </collision>
@@ -195,7 +195,7 @@
     <origin xyz = "${- wheel_offset - wheel_width_offset} ${-wheel_offset - wheel_width_offset} -0.075"/>
     <axis xyz ="-1 -1 0"/>
     <limit effort="30" velocity="100"/>
-    <dynamics damping="0.0" friction="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
 
   <transmission name="left_back_wheel_trans">
@@ -219,7 +219,7 @@
     </visual> 
     <collision>
      <geometry>
-        <cylinder radius = "0.075" length = "0.04"/>
+        <cylinder radius = "0.075" length = "0.05"/>
       </geometry>
       <origin rpy="0 ${pi/2} ${(-pi/4) + pi}"/>
     </collision>
@@ -232,7 +232,7 @@
     <origin xyz = "${wheel_offset + wheel_width_offset} ${-wheel_offset - wheel_width_offset} -0.075"/>
     <axis xyz ="1 -1 0"/>
     <limit effort="30" velocity="100"/>
-    <dynamics damping="0.0" friction="0.1"/>
+    <dynamics damping="0.0" friction="0.0"/>
   </joint>
 
   <transmission name="right_back_wheel_trans">
