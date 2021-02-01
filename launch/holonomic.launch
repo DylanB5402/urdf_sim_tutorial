@@ -19,15 +19,15 @@
     </include>
 
     <rosparam command="load"
-        file="$(find urdf_sim_tutorial)/config/holonomicjoints.yaml"
+        file="$(find urdf_sim_tutorial)/config/holo/holonomicjoints.yaml"
         ns="holonomic_joint_state_controller" />
 
     <rosparam command="load"
-        file="$(find urdf_sim_tutorial)/config/turret.yaml"
+        file="$(find urdf_sim_tutorial)/config/holo/turret.yaml"
         ns="turret_controller" />
 
     <rosparam command="load"
-        file="$(find urdf_sim_tutorial)/config/holonomicdrive.yaml"
+        file="$(find urdf_sim_tutorial)/config/holo/holonomicdrive.yaml"
         ns="holonomic_drive_controller" />
 
     <node name="robot_controller_spawner" pkg="controller_manager" type="spawner"

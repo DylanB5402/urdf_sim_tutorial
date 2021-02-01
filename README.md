@@ -13,3 +13,5 @@ if gazebo doesn't run or doesn't open the urdf model, or the urdf model shows up
 
 killall gzclient
 killall gzserver
+
+bixi urdf from https://github.com/ron1818/Project_Bixi
